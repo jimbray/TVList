@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TVList</string>
+
+    <string name="tab_stream">Stream</string>
+    <string name="tab_personal">Personal</string>
+    
+    <string name="path">https://netstream.googlecode.com/svn/trunk/list/list.xml</string>
+    
+    <string name="loading_text">loading...</string>
+    <string name="load_no_data">no data</string>
+    <string name="load_error">error, click to load again</string>
+    
+    <string name="no_software_to_play">didn\'t find any application can play this item.</string>
+    
+    <string name="choose_belong">choose the one to belong with</string>
+    <string name="add_custom_type">add a new type</string>
+    
+    <string name="new_type_edit_title">give it a name</string>
+    
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    
+    <string name="name_existed">the name is aleady existed, make another</string>
+    
+    <string name="no_custom_list">you don\'t have any collect</string>
+    
+    <string name="group_setting_dialog_title">choose a operate for group</string>
+    <string name="group_setting_edit">edit</string>
+    <string name="group_setting_remove">remove</string>
+    
+    <string name="added_successful">added successful</string>
+    <string name="added_fail">added fail</string>
+    <string name="remove_successful">remove successful</string>
+    <string name="remove_fail">remove fail</string>
+    <string name="update_fail">update fail</string>
+    <string name="changed_successful">changed successful</string>
+    
+    <string name="expandable_view_group_tag">group_tag</string>
+    <string name="expandable_view_child_tag">child_tag</string>
+    
+    <string name="child_setting_remove">remove</string>
+    <string name="child_setting_change">change to another group</string>
+    <string name="child_setting_add">add to another group</string>
+    
+    <string name="choose_a_operate">Choose a operate</string>
+    
+    <string name="add_to_other_group">add to another group</string>
+    <string name="change_to_other_group">change to another group</string>
+    
+    <string name="menu_about">About</string>
+</resources>
