@@ -2,6 +2,9 @@ package com.jim.tvs;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.AdView;
+import net.youmi.android.appoffers.CheckStatusNotifier;
+import net.youmi.android.appoffers.YoumiOffersManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
@@ -18,7 +22,7 @@ import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.jim.data.DataProviderManager;
+import com.jim.common.Constants;
 
 public class MainActivity extends SherlockFragmentActivity implements TabListener {
 	public static final int Theme = R.style.Theme_Sherlock_Light_DarkActionBar;
@@ -63,17 +67,24 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 				intent.setClass(this, AboutActivity.class);
 				startActivity(intent);
 				break;
+				
+			case R.id.menu_app:
+				YoumiOffersManager.showOffers(this, YoumiOffersManager.TYPE_REWARDLESS_APPLIST);
+				break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	private void initAdView() {
-    	AdManager.init(this, "653f7251b5216ee5", "dec6c04529c98f17", 10, false);
+    	AdManager.init(this, Constants.YOUMI_APP_ID, Constants.YOUMI_APP_SECRET, 10, false);
     	
     	LinearLayout adViewLayout = (LinearLayout) findViewById(R.id.adViewLayout);
     	adViewLayout.addView(new AdView(this),
     			new LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-    }
+    
+    	YoumiOffersManager.init(this, Constants.YOUMI_APP_ID, Constants.YOUMI_APP_SECRET);
+    	YoumiOffersManager.checkStatus(this, new isAddWordedListener());
+	}
     
     private void setUpTabs() {
     	setUpTabStream();
@@ -165,5 +176,20 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	class isAddWordedListener implements CheckStatusNotifier {
+
+		@Override
+		public void onCheckStatusConnectionFailed(Context arg0) {
+			Log.d("AddStatus", "add Fail!!!");
+		}
+
+		@Override
+		public void onCheckStatusResponse(Context arg0, boolean isAppInvalid,
+				boolean isInTestMode, boolean isDeviceInvalid) {
+			Log.d("AddStatus", "isAppInvalid+" + isAppInvalid + 
+					"+isInTestMode+" + isInTestMode + "+isDeviceInvalid+"+ isDeviceInvalid );
+		}
 	}
 }

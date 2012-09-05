@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="libs/FlurryAgent.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="libs/youmi-appoffer_v2.13_a_2012-05-25.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
